@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-plex), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-amiri), var(--font-plex), serif;
+
+  --color-paper: #fbf9f5;
+  --color-card: #ffffff;
+  --color-ink: #231f1b;
+  --color-ink-soft: #4a423a;
+  --color-muted: #7a7064;
+  --color-line: #ece5d9;
+  --color-line-strong: #dcd2c2;
+  --color-gold: #94743e;
+  --color-gold-dark: #765b2e;
+  --color-gold-soft: #f5eddf;
+  --color-success: #2f7d57;
+  --color-success-soft: #e6f3ec;
+  --color-danger: #b4403a;
+  --color-danger-soft: #fbeceb;
+  --color-warn: #a86b12;
+  --color-warn-soft: #fcf2e0;
+
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --shadow-soft: 0 1px 2px rgb(35 31 27 / 0.04), 0 8px 24px -12px rgb(35 31 27 / 0.12);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Numbers inside Arabic text read better with tabular Latin digits. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                            Public invitation page                          */
+/* -------------------------------------------------------------------------- */
+
+.inv {
+  background: var(--inv-bg);
+  color: var(--inv-ink);
+  min-height: 100dvh;
+}
+.inv .inv-display {
+  font-family: var(--inv-display), var(--font-plex), serif;
+}
+.inv[lang="en"] .inv-display {
+  font-family: var(--font-cormorant), var(--inv-display), serif;
+}
+.inv[lang="en"][data-ornament="minimal"] .inv-display {
+  font-family: var(--font-plex), sans-serif;
+  letter-spacing: 0.02em;
+}
+.inv .inv-surface {
+  background: var(--inv-surface);
+  border: 1px solid var(--inv-border);
+}
+.inv .inv-muted {
+  color: var(--inv-muted);
+}
+.inv .inv-accent {
+  color: var(--inv-accent);
+}
+.inv .inv-btn {
+  background: var(--inv-accent);
+  color: var(--inv-on-accent);
+}
+.inv .inv-btn-outline {
+  border: 1px solid var(--inv-accent);
+  color: var(--inv-accent);
+}
+.inv .inv-border {
+  border-color: var(--inv-border);
+}
+.inv input,
+.inv textarea,
+.inv select {
+  background: var(--inv-bg);
+  border: 1px solid var(--inv-border);
+  color: var(--inv-ink);
+}
+.inv input:focus,
+.inv textarea:focus,
+.inv select:focus {
+  outline: none;
+  border-color: var(--inv-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--inv-accent) 20%, transparent);
+}
+
+@keyframes inv-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.inv-reveal {
+  animation: inv-fade-up 0.7s ease-out both;
+}
